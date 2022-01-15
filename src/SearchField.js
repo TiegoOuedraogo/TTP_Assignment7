@@ -28,12 +28,12 @@ function SearchField(){
       fetch(`http://api.giphy.com/v1/gifs/random?api_key=JDwoSNpqCHUB6d1Ls8W0yuAERZVXUj6L`)
       .then(response => response.json())
         .then(data=>{
-          setData(data.data)
+          setData([data.data])
           let image = data.data.images.original
           setList(<img src={image.url}style={{margin:"2.5% 1%",borderRadius:"30px",alignSelf:"center"}}height={image.height}alt={data.data.title}></img>)})
       }
     function sortBySize(x){
-      if(gifData && gifData.length>0){
+      if(gifData && gifData.length>1){
       let arr = gifData.sort((a,b)=>x*((a.images.original.width*a.images.original.height) - (b.images.original.width*b.images.original.height)))
       setList(arr.map(gif=><img src={gif.images.original.url}style={{margin:"2.5% 1%",borderRadius:"30px",alignSelf:"center"}}height={gif.images.original.height}alt={gif.title}></img>))
         }
@@ -44,7 +44,6 @@ function SearchField(){
       setList(arr.map(gif=><img src={gif.images.original.url}style={{margin:"2.5% 1%",borderRadius:"30px",alignSelf:"center"}}height={gif.images.original.height}alt={gif.title}></img>))
       setData(arr)
         }
-      else if(gifData && gifData.rating!=="g")setList([])
       }
     return(<>
         <form onSubmit={(event)=>{event.preventDefault();fetchGifs()}}>
