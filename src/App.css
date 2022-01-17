@@ -36,3 +36,40 @@
     transform: rotate(360deg);
   }
 }
+
+.gifRenders{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.gifRenders img{
+  margin: 10px;
+  max-width: 400px;
+  max-height: 300px;
+}
+
+@keyframes example {
+  0%   {background-color:rgb(168, 154, 168);}
+  25%  {background-color:yellow;}
+  50%  {background-color:thistle;}
+  75%  {background-color:pink;}
+  100% {background-color:greenyellow;}
+}
+
+.search-btn{
+  justify-content: center;
+  /* background-color: red; */
+  margin: 10px;
+  border-radius: 10%;
+  font-size: large;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+
+}
+
+.searchBar{
+  text-align: center;
+  margin: 20px;
+  border-radius: 10%;
+}

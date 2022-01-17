@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { SearchField } from './SearchField';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SearchField />
   </React.StrictMode>,
   document.getElementById('root')
 );

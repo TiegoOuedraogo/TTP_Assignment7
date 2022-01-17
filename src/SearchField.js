@@ -1,29 +1,24 @@
 import React, { useState } from 'react';
-
+import App from "./App"
+import './App.css';
 function SearchField(){
     const [gifSearch, setSearch] = useState("")
-    const [gifList, setList] = useState([])
-    const [rawGifData, setData] = useState([])
+    
 
-
-    function fetchGifs(){
-      setData([])
-      fetch(`https://api.giphy.com/v1/gifs/search?q=${gifSearch}&api_key=JDwoSNpqCHUB6d1Ls8W0yuAERZVXUj6L`)
-        .then(response => response.json())
-          .then(data=>{
-            setData(data)
-            setList(data.data.map(gif=><img src={gif.images.original.url}style={{margin:"2.5% 1%",borderRadius:"30px",alignSelf:"center"}}height={gif.images.original.height}></img>))
-            })
-
-    }
-    return(<>
-        <form onSubmit={(event)=>{event.preventDefault();fetchGifs()}}>
+    return(
+      <>
+        <form className='searchBar' onSubmit={(event)=>{event.preventDefault()}}>
           <label>Search for GIFS: </label>
-          <input onChange={(event)=>setSearch(event.target.value)}name="gifInput"value={gifSearch}></input>
-          <input type="submit" value="SUBMIT"></input>
+          <input onChange={(event)=>setSearch(event.target.value)}name="gifInput"></input>
         </form>
-        <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-between"}}>{gifList}</div>
-        </>)
+
+        {console.log(gifSearch)}
+
+        <App 
+          searchTerm = {gifSearch}
+        />
+        </>
+    )
 }
 
 export {SearchField}
