@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import {SearchField} from './SearchField'
+import {SortFilterField} from './SortFilterField'
+import {GifField} from './GifField'
+import {useState} from 'react'
 
 function App() {
+  const [gifSearch, setSearch] = useState("")
+  const [gifList, setList] = useState([])
+  const [gifData, setData] = useState(undefined)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <>
+  <SearchField gifData={gifData} gifList={gifList} gifSearch={gifSearch} setSearch={setSearch} setList={setList} setData={setData}/>
+  <SortFilterField gifData={gifData} gifList={gifList} setList={setList} setData={setData}/>
+  <GifField gifList={gifList}/>
+  </>)
 }
 
 export default App;
