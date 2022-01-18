@@ -1,39 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-import React,{useState} from "react"
-import { SearchField } from './SearchField';
+import {SearchField} from './SearchField'
+import {SortFilterField} from './SortFilterField'
+import {GifField} from './GifField'
+import {useState} from 'react'
 
-function App(prop) {
-  const [gifs, setGif] = useState([]);
-  
-  function fetchGifs(){
-    console.log(prop.searchTerm)
+function App() {
+  const [gifSearch, setSearch] = useState("")
+  const [gifList, setList] = useState([])
+  const [gifData, setData] = useState(undefined)
 
-    setGif([]);// Start off with no gifs each search
-    fetch(`https://api.giphy.com/v1/gifs/search?q=${prop.searchTerm}&api_key=JDwoSNpqCHUB6d1Ls8W0yuAERZVXUj6L`)
-    .then(response => {
-          if(!response.ok){
-            alert("No gifs found😕");
-          }else {
-            return response.json()
-          }
-    }).then(data => {
-      //setGif(data.data.map(gif => <img src={gif.images.original.url}></img>))
-      setGif(data.data)
-    })
-  }
-
-  const vids = gifs.map(gif => <img src={gif.images.original.url}></img>);
   return (
-    <>
-    <center><button className='search-btn' onClick={fetchGifs}>Search</button></center>
-    <div className='gifRenders'>
-      
-      {vids}
-      
-    </div>
-    </>
-  )
+  <>
+  <SearchField gifData={gifData} gifList={gifList} gifSearch={gifSearch} setSearch={setSearch} setList={setList} setData={setData}/>
+  <SortFilterField gifData={gifData} gifList={gifList} setList={setList} setData={setData}/>
+  <GifField gifList={gifList}/>
+  </>)
 }
 
 export default App;
