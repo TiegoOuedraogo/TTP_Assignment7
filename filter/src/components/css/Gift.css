@@ -1,0 +1,26 @@
+.mainContainer{
+  border: 1px solid black;
+  width: 400px !important;
+  height: auto;
+  padding: 4px;
+  margin-left: 3px;
+  
+}
+.img{
+  width: 100%;
+  height: auto;
+
+}
+.description{
+  text-align: left;
+  padding-left: 4px;
+  background-color: aqua;
+  color: black;
+}
+.drop{
+  border: 2px solid black;
+  padding: 2px;
+}
+.accordion-body{
+  padding-left: 2px;
+}
