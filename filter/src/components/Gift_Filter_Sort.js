@@ -36,6 +36,29 @@ class Gift_Filter_Sort extends React.Component {
     };
   };
   //being in the class you cannot use const
+  filterByRatingG = () => {
+    let gifts = this.state.gifts;
+    let newfilfter = gifts.filter((gift) => {
+      const ratinG = gift.images.original;
+      return ratinG;
+    });
+    
+    console.log("line 33 ", newfilfter);
+    this.setState({ gifts: newfilfter });
+  };
+
+  filterByRatingPG = () => {
+    let gifts = this.state.gifts;
+    let newfilfter = gifts.filter((gift) => {
+      const ratinPG = gift.images.original;
+      return ratinPG;
+    });
+    
+    console.log("line 33 ", newfilfter);
+    this.setState({ gifts: newfilfter });
+  };
+
+
   filterByHeight = () => {
     let gifts = this.state.gifts;
     let newfilfter = gifts.filter((gift) => {
@@ -165,6 +188,7 @@ class Gift_Filter_Sort extends React.Component {
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>
+              
               <Accordion className="col-sm">
                 <Accordion.Item eventKey="1" className="col-sm">
                   <Accordion.Header>Width</Accordion.Header>
@@ -216,6 +240,17 @@ class Gift_Filter_Sort extends React.Component {
               </Accordion>
             </div>
           </div>
+
+          <div className="col-4">
+            <DropdownButton
+              variant="outline-secondary"
+              title="Rating"
+              id="input-group-dropdown-1"
+            >
+              <Dropdown.Item onClick={this.filterByRatingG}>G</Dropdown.Item>
+              <Dropdown.Item onClick={this.filterByRatingPG}>PG</Dropdown.Item>
+            </DropdownButton>
+          </div>
           <div className="col-2">
             <DropdownButton
               variant="outline-secondary"
@@ -233,7 +268,7 @@ class Gift_Filter_Sort extends React.Component {
         {/* first thing is to print
           to print we have to use the map function
       */}
-        {gifts.map((gift) => (
+        {this.props.gifts.map((gift) => (
           <SingleGift gift={gift} key={gift.id} />
         ))}
       </div>

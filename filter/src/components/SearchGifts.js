@@ -3,31 +3,26 @@ import React from "react";
 import Gift_Filter_Sort from "./Gift_Filter_Sort";
 import {
   Form,
-  InputGroup,
   Button,
-  FormControl,
   Col,
   Row,
 } from "react-bootstrap";
 
 //functional component
-function SearchGifts() {
+function SearchGifts (pros) {
+  
+
   const [error, setError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [fetchData, setData] = useState(null);
   const [searchValue, setSearchValue] = useState("");
-
-  // const CustomButton = ()=> {
-  //   // ...
-  // }
+  // State to store value from the input field
+  const [inputValue, setInputValue] = useState("");
   
-  // CustomButton.defaultProps = {
-  //   color: 'blue'
-  // };
-
   //same as component didMounted
+  // props.setList([])
   const searchOutput = async (event) => {
-    console.log("22222222222: ",searchValue)
+    
     event.preventDefault();
     const URL = "http://api.giphy.com/v1/gifs/search?q=";
     const APIKEY = "&api_key=JDwoSNpqCHUB6d1Ls8W0yuAERZVXUj6L";
@@ -50,8 +45,10 @@ function SearchGifts() {
   if (error) {
     return <div>Error:</div>;
   }
-  console.log("User input", searchValue);
+  console.log("User input", fetchData);
+
   if (isLoaded && fetchData != null) {
+
     return (
       <div className="wrapper">
         {/* we are passing the fetchData to the GiftFilter using gifts as name */}
@@ -76,7 +73,7 @@ function SearchGifts() {
             </Col>
           </Row>
         </Form>
-        <Gift_Filter_Sort gifts={fetchData} />
+        <Gift_Filter_Sort gifts={fetchData} input={searchOutput} />
       </div>
     );
   }

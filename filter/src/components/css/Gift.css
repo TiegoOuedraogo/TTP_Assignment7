@@ -1,9 +1,6 @@
 .mainContainer{
-  border: 1px solid black;
-  width: 400px !important;
-  height: auto;
-  padding: 4px;
-  margin-left: 3px;
+ width:fit-content;
+ display: flex;
   
 }
 .img{
@@ -24,3 +21,4 @@
 .accordion-body{
   padding-left: 2px;
 }
+

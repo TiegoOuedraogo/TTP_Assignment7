@@ -5,14 +5,9 @@ class SingleGift extends React.Component {
     super(props);
   }
   render() {
-    const gift =  this.props.gift
-    // const url = "https://media4.giphy.com/media/4oLa6g7JBY1H2/giphy.gif?cid=203293aba8c0vensyu93rmucioi90qcdzo9au9qu4d9t1f9m&rid=giphy.gif&ct=g";
-    // const title = "Kenan And Kel Reaction GIF";
-    // const size = "695187";
-    // const width = "480"
-    // const height = "310"
+    const gift =  this.props.gift;
     return (
-      <div className="col mainContainer ">
+      <div className="col mainContainer " >
         <div className="image row">
           <img src={gift.images.original.url} alt="Single image" className="img"/>
         </div>

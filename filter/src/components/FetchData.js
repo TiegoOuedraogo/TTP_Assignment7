@@ -6,7 +6,7 @@ function FetchData() {
   const [error, setError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [fetchData, setData] = useState(null);
-fetchData([])
+
   useEffect(async () => {
     try{
       const response = await fetch("http://api.giphy.com/v1/gifs/search?q=SEARCH+TERM+GOES+HERE&api_key=JDwoSNpqCHUB6d1Ls8W0yuAERZVXUj6L")
@@ -25,7 +25,7 @@ fetchData([])
       console.log("err", err);
     }
  
-  }, []); //useEffect reset
+  }, []) //useEffect reset
 
   if (error) {
     return <div>Error:</div>;
